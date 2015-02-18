@@ -27,6 +27,7 @@ Where `TOKEN` is usually defined using a variable, e.g. `"${var.digital_ocean_to
 * `hostname`
     * Label of the droplet in Terraform and Digital Ocean and its hostname.
     * This variable **MUST** be considered a valid hostname string by the Digital Ocean API.
+    * This variable **SHOULD** be consistent ideally following a convention.
     * This variable **MUST** be specified.
     * Default: None
 * `image`
@@ -60,7 +61,7 @@ Where `TOKEN` is usually defined using a variable, e.g. `"${var.digital_ocean_to
 
 E.g.
 
-```javascript
+```ruby
 # Resources
 
 # 'MACHINE_LABEL' resource
@@ -78,7 +79,7 @@ Where: `MACHINE_LABEL` is the name of the droplet (i.e. its hostname) and `${var
 
 E.g.
 
-```javascript
+```ruby
 # Resources
 
 # 'bslweb-denizens-prod-web2' resource
@@ -103,7 +104,7 @@ module "bslweb-denizens-prod-web2" {
 
 Assuming you have an instance of this module labeled `calcifer-satin-prod-node1` and you want to expose it's public IP address as an output named `bslweb-denizens-prod-web2-ip-v4-address-public` you would do something like this in your main terraform file.
 
-```javascript
+```ruby
 output "bslweb-denizens-prod-web2-ip-v4-address-public" {
     value = "${module.bslweb-denizens-prod-web2.ip_v4_address_public}"
 }
