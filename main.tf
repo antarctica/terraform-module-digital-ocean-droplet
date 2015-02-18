@@ -43,6 +43,9 @@ resource "digitalocean_droplet" "droplet" {
 output "hostname" {
     value = "${var.hostname}"
 }
-output "ip_v4_address" {
+output "ip_v4_address_public" {
     value = "${digitalocean_droplet.droplet.ipv4_address}"
+}
+output "ip_v4_address_private" {
+    value = "${digitalocean_droplet.droplet.ipv4_address_private}"
 }
