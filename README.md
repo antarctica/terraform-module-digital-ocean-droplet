@@ -63,16 +63,18 @@ E.g.
 ```javascript
 # Resources
 
-# 'DROPLET_LABEL' resource
+# 'MACHINE_LABEL' resource
 
-module "DROPLET_LABEL" {
+# VM
+
+module "MACHINE_LABEL" {
     source = "github.com/antarctica/terraform-module-digital-ocean-droplet"
-    hostname = "DROPLET_LABEL"
+    hostname = "MACHINE_LABEL"
     ssh_fingerprint = "${var.ssh_fingerprint}"
 }
 ```
 
-Where: `DROPLET_LABEL` is the name of the droplet (i.e. its hostname) and `${var.ssh_fingerprint}` is a Terraform variable `ssh_fingerprint`.
+Where: `MACHINE_LABEL` is the name of the droplet (i.e. its hostname) and `${var.ssh_fingerprint}` is a Terraform variable `ssh_fingerprint`.
 
 E.g.
 
@@ -81,8 +83,9 @@ E.g.
 
 # 'bslweb-denizens-prod-web2' resource
 
+# VM
+
 module "bslweb-denizens-prod-web2" {
-    source = "github.com/antarctica/terraform-module-digital-ocean-droplet"
     hostname = "bslweb-denizens-prod-web2"
     ssh_fingerprint = "${var.ssh_fingerprint}"
 }
