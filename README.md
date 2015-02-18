@@ -92,6 +92,8 @@ module "bslweb-denizens-prod-web2" {
 
 * `ip_v4_address`
     * The public IP v4 address of the droplet
+* `ip_v4_address_private`
+    * The private IP v4 address of the droplet
 
 #### Example usage
 
