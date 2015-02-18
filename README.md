@@ -97,11 +97,11 @@ module "bslweb-denizens-prod-web2" {
 
 #### Example usage
 
-Assuming your have an instance of this module labeled `calcifer-satin-prod-node1` and you want to expose that as an output named `bslweb-denizens-prod-web2-ip-v4-address` in your main terraform file.
+Assuming you have an instance of this module labeled `calcifer-satin-prod-node1` and you want to expose it's public IP address as an output named `bslweb-denizens-prod-web2-ip-v4-address-public` you would do something like this in your main terraform file.
 
 ```javascript
-output "bslweb-denizens-prod-web2-ip-v4-address" {
-    value = "${module.bslweb-denizens-prod-web2.ip_v4_address}"
+output "bslweb-denizens-prod-web2-ip-v4-address-public" {
+    value = "${module.bslweb-denizens-prod-web2.ip_v4_address_public}"
 }
 ```
 
