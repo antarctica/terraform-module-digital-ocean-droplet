@@ -90,7 +90,7 @@ module "bslweb-denizens-prod-web2" {
 
 ### Outputs
 
-* `ip_v4_address`
+* `ip_v4_address_public`
     * The public IP v4 address of the droplet
 
 #### Example usage
