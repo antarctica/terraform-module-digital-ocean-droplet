@@ -86,6 +86,7 @@ E.g.
 # VM
 
 module "bslweb-denizens-prod-web2" {
+    source = "github.com/antarctica/terraform-module-digital-ocean-droplet?ref=v1.0.0"
     hostname = "bslweb-denizens-prod-web2"
     ssh_fingerprint = "${var.ssh_fingerprint}"
 }
