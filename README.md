@@ -10,10 +10,11 @@ This module is designed for internal use but if useful can be shared publicly.
 
 ### Requirements
 
+#### DigitalOcean access token
 
-```
-# Digital Ocean provider configuration
 Somewhere in your project you must have specified an access token for the DigitalOcean provider like this:
+
+```ruby
 # Define variables
 
 variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
@@ -55,7 +56,7 @@ Where `TOKEN` is usually defined using a variable, e.g. `"${var.digital_ocean_to
     * Whether to enable private networking, if supported by the selected `region`.
     * See [DigitalOcean's API documentation](https://developers.digitalocean.com/#list-all-regions) for details on which regions support this feature.
     * This variable **MUST** be a quoted boolean value (i.e. "true" or "false")
-    * Default: "true"   
+    * Default: "true"
 * `ssh_fingerprint` 
     * The [fingerprint](http://en.wikipedia.org/wiki/Public_key_fingerprint) of the public key that should be granted root access to the droplet. 
     * To generate the fingerprint of a public key `id_rsa.pub` located in `~` use this command: `ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}'`.
@@ -80,7 +81,7 @@ variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF
 # VM
 
 module "MACHINE_LABEL" {
-    source = "github.com/antarctica/terraform-module-digital-ocean-droplet"
+    source = "github.com/antarctica/terraform-module-digital-ocean-droplet?ref=v1.1.0"
     hostname = "MACHINE_LABEL"
     ssh_fingerprint = "${var.ssh_fingerprint}"
 }
@@ -98,13 +99,13 @@ variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF
 
 # Resources
 
-# 'bslweb-denizens-prod-web2' resource
+# 'lioncub-dev-node1' resource
 
 # VM
 
-module "bslweb-denizens-prod-web2" {
-    source = "github.com/antarctica/terraform-module-digital-ocean-droplet?ref=v1.0.0"
-    hostname = "bslweb-denizens-prod-web2"
+module "lioncub-dev-node1" {
+    source = "github.com/antarctica/terraform-module-digital-ocean-droplet?ref=v1.1.0"
+    hostname = "lioncub-dev-node1"
     ssh_fingerprint = "${var.ssh_fingerprint}"
 }
 ```
@@ -118,11 +119,11 @@ module "bslweb-denizens-prod-web2" {
 
 #### Example usage
 
-Assuming you have an instance of this module labeled `calcifer-satin-prod-node1` and you want to expose it's public IP address as an output named `bslweb-denizens-prod-web2-ip-v4-address-public` you would do something like this in your main terraform file.
+Assuming you have an instance of this module labeled `lioncub-dev-node1` and you want to expose it's public IP address as an output named `lioncub-dev-node1-ip-v4-address-public` you would do something like this in your main terraform file.
 
 ```ruby
-output "bslweb-denizens-prod-web2-ip-v4-address-public" {
-    value = "${module.bslweb-denizens-prod-web2.ip_v4_address_public}"
+output "lioncub-dev-node1-ip-v4-address-public" {
+    value = "${module.lioncub-dev-node1.ip_v4_address_public}"
 }
 ```
 
