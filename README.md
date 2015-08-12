@@ -1,6 +1,6 @@
-# Terraform Module - Digital Ocean Droplet
+# Terraform Module - DigitalOcean Droplet
 
-Specifies an opinionated default Digital Ocean 'droplet' resource.
+Specifies an opinionated default DigitalOcean 'droplet' resource.
 
 ## Availability
 
@@ -10,10 +10,10 @@ This module is designed for internal use but if useful can be shared publicly.
 
 ### Requirements
 
-Somewhere in your project you must have specified an access token for the digital ocean provider like this:
 
 ```
 # Digital Ocean provider configuration
+Somewhere in your project you must have specified an access token for the DigitalOcean provider like this:
 # Define variables
 
 variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
@@ -31,35 +31,35 @@ Where `TOKEN` is usually defined using a variable, e.g. `"${var.digital_ocean_to
 ### Variables
 
 * `hostname`
-    * Label of the droplet in Terraform and Digital Ocean and its hostname.
-    * This variable **MUST** be considered a valid hostname string by the Digital Ocean API.
+    * Label of the droplet in Terraform and DigitalOcean and its hostname.
+    * This variable **MUST** be considered a valid hostname string by the DigitalOcean API.
     * This variable **SHOULD** be consistent ideally following a convention.
     * This variable **MUST** be specified.
     * Default: None
 * `image`
     * Droplet boot image.
-    * See [Digital Ocean's API documentation](https://developers.digitalocean.com/#list-all-images) for details.
-    * This variable **MUST** be a valid Digital Ocean image (base image, application, user image, etc.) as a string.
+    * See [DigitalOcean's API documentation](https://developers.digitalocean.com/#list-all-images) for details.
+    * This variable **MUST** be a valid DigitalOcean image (base image, application, user image, etc.) as a string.
     * Default: "ubuntu-14-04-x64"
 * `region`
     * Datacentre in which to create droplet.
-    * See [Digital Ocean's API documentation](https://developers.digitalocean.com/#list-all-regions) for details.
-    * This variable **MUST** be a valid Digital Ocean region as a string.
+    * See [DigitalOcean's API documentation](https://developers.digitalocean.com/#list-all-regions) for details.
+    * This variable **MUST** be a valid DigitalOcean region as a string.
     * Default: "lon1"
 * `size`
     * Size or scale of droplet, measured in terms of RAM with scaled CPU and Disk resources.
-    * See [Digital Ocean's API documentation](https://developers.digitalocean.com/#list-all-sizes) for details.
-    * This variable **MUST** be a valid Digital Ocean size as a string.
+    * See [DigitalOcean's API documentation](https://developers.digitalocean.com/#list-all-sizes) for details.
+    * This variable **MUST** be a valid DigitalOcean size as a string.
     * Default: "512mb" 
 * `private_networking`
     * Whether to enable private networking, if supported by the selected `region`.
-    * See [Digital Ocean's API documentation](https://developers.digitalocean.com/#list-all-regions) for details on which regions support this feature.
+    * See [DigitalOcean's API documentation](https://developers.digitalocean.com/#list-all-regions) for details on which regions support this feature.
     * This variable **MUST** be a quoted boolean value (i.e. "true" or "false")
     * Default: "true"   
 * `ssh_fingerprint` 
     * The [fingerprint](http://en.wikipedia.org/wiki/Public_key_fingerprint) of the public key that should be granted root access to the droplet. 
     * To generate the fingerprint of a public key `id_rsa.pub` located in `~` use this command: `ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}'`.
-    * The public key specified **MUST** be listed in the Digital Ocean account being used prior to using Terraform to create droplets using this key.
+    * The public key specified **MUST** be listed in the DigitalOcean account being used prior to using Terraform to create droplets using this key.
     * This variable **MUST** be specified.
     * Default: None
 
@@ -129,8 +129,7 @@ output "bslweb-denizens-prod-web2-ip-v4-address-public" {
 ## Limitations
 
 * [BASWEB-194](https://jira.ceh.ac.uk/browse/BASWEB-194) - It isn't currently possible to specify more than one SSH key
- when creating a Digital Ocean droplet using Terraform. This means only one user can initially login as root and is a bug.
-
+ when creating a DigitalOcean droplet using Terraform. This means only one user can initially login as root and is a bug.
 
 ## Contributions
 
