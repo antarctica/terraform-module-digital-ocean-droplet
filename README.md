@@ -71,7 +71,7 @@ E.g.
 ```ruby
 # Define variables
 
-variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
+variable "ssh_fingerprint" {}  # Define using environment variable - e.g. TF_VAR_ssh_fingerprint=XXX
 
 
 # Resources
@@ -94,7 +94,7 @@ E.g.
 ```ruby
 # Define variables
 
-variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
+variable "ssh_fingerprint" {}  # Define using environment variable - e.g. TF_VAR_ssh_fingerprint=XXX
 
 
 # Resources
