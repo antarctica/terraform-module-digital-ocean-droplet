@@ -14,13 +14,19 @@ Somewhere in your project you must have specified an access token for the digita
 
 ```
 # Digital Ocean provider configuration
+# Define variables
+
+variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
+
+
+# DigitalOcean provider configuration
 
 provider "digitalocean" {
-    token = "TOKEN"
+    token = "${var.digital_ocean_token}"
 }
 ```
 
-Where `TOKEN` is usually defined using a variable, e.g. `"${var.digital_ocean_token}"`.
+Where `TOKEN` is usually defined using a variable, e.g. `"${var.digital_ocean_token}"`, with its value set using an environment variable, e.g. `TF_VAR_digital_ocean_token=XXX`.
 
 ### Variables
 
@@ -62,6 +68,11 @@ Where `TOKEN` is usually defined using a variable, e.g. `"${var.digital_ocean_to
 E.g.
 
 ```ruby
+# Define variables
+
+variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
+
+
 # Resources
 
 # 'MACHINE_LABEL' resource
@@ -75,11 +86,16 @@ module "MACHINE_LABEL" {
 }
 ```
 
-Where: `MACHINE_LABEL` is the name of the droplet (i.e. its hostname) and `${var.ssh_fingerprint}` is a Terraform variable `ssh_fingerprint`.
+Where: `MACHINE_LABEL` is the name of the droplet (i.e. its hostname) and `${var.ssh_fingerprint}` is usually defined using a variable, e.g. `"${var.ssh_fingerprint}"`, with its value set using an environment variable, e.g. `TF_VAR_ssh_fingerprint=XXX`.
 
 E.g.
 
 ```ruby
+# Define variables
+
+variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
+
+
 # Resources
 
 # 'bslweb-denizens-prod-web2' resource
@@ -115,8 +131,6 @@ output "bslweb-denizens-prod-web2-ip-v4-address-public" {
 * [BASWEB-194](https://jira.ceh.ac.uk/browse/BASWEB-194) - It isn't currently possible to specify more than one SSH key
  when creating a Digital Ocean droplet using Terraform. This means only one user can initially login as root and is a bug.
 
-* [Terraform #57](https://github.com/hashicorp/terraform/issues/57) - It isn't currently possible to set Terraform from Environment variables, and therefore a `terraform.tfvars`
-file is needed as a stand-in. This is annoying and is a limitation of the software.
 
 ## Contributions
 
