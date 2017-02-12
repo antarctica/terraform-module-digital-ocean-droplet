@@ -19,8 +19,9 @@ variable "private_networking" {
     default = "true"
     description = "See https://www.digitalocean.com/company/blog/introducing-private-networking/"
 }
-variable "ssh_fingerprint" {
+variable "ssh_fingerprints" {
     description = "See module read-me for details"
+    type = "list"
 }
 
 
@@ -32,9 +33,7 @@ resource "digitalocean_droplet" "droplet" {
     region = "${var.region}"
     size = "${var.size}"
     private_networking = "${var.private_networking}"
-    ssh_keys = [
-        "${var.ssh_fingerprint}"
-    ]
+    ssh_keys = "${var.ssh_fingerprints}"
 }
 
 
