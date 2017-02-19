@@ -96,6 +96,13 @@ E.g.
 
 variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF_VAR_digital_ocean_token=XXX
 
+variable "ssh_fingerprints" {
+    default = [
+        "FINGERPRINT1",
+        "FINGERPRINT2"
+    ]
+}
+
 
 # Resources
 
@@ -106,7 +113,7 @@ variable "digital_ocean_token" {}  # Define using environment variable - e.g. TF
 module "lioncub-dev-node1" {
     source = "github.com/antarctica/terraform-module-digital-ocean-droplet?ref=v1.1.0"
     hostname = "lioncub-dev-node1"
-    ssh_fingerprint = "${var.ssh_fingerprint}"
+    ssh_fingerprints = "${var.ssh_fingerprints}"
 }
 ```
 
@@ -126,12 +133,6 @@ output "lioncub-dev-node1-ip-v4-address-public" {
     value = "${module.lioncub-dev-node1.ip_v4_address_public}"
 }
 ```
-
-## Limitations
-
-* [BASWEB-194](https://jira.ceh.ac.uk/browse/BASWEB-194) - It isn't currently possible to specify more than one SSH key
- when creating a DigitalOcean droplet using Terraform. This means only one user can initially login as root and is a bug.
-
 ## Contributions
 
 This project welcomes contributions, see `CONTRIBUTING` for our general policy.
